@@ -1,18 +1,30 @@
-import Success from './success';
+'use strict';
 
-(function() {
-    'use strict';
+import Notify from './notify';
+import Prompt from './prompt';
+import _ from 'lodash';
 
-    /**
-     * Constructor
-     */
-    var Bulletin = function() {
-        var bulletin = {
-            success: Success
-        };
+var defaults = {
+  duration: 1500,
+  someProp: 'james'
+};
 
-        return bulletin;
-    };
+//http://stackoverflow.com/questions/8624590/accessing-instance-variable-from-parent-function
+//google: javascript get parameters from parent function
+//just make this a prototype and call function from something like Bulletin.prototype.prompt, retrieving this.settings from constructor
 
-    export { Bulletin };
-})();
+var Bulletin = function(options) {
+  var trap = 123;
+
+  var settings = _.extend(defaults, options);
+
+  var bulletinApi = {
+    notify: Notify,
+    prompt: Prompt
+  };
+
+  return bulletinApi;
+};
+
+export default Bulletin;
+

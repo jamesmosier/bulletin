@@ -25,5 +25,8 @@
     "node-libs-browser": "^0.5.3",
     "strip-loader": "^0.1.0",
     "webpack": "^1.12.2"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
   }
 }

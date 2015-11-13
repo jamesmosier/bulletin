@@ -5,6 +5,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  devtool: 'source-map',
+
   context: path.resolve('app/js'),
   entry: ['./main'],
   presets: ['es2015'],
@@ -19,8 +21,8 @@ module.exports = {
   },
 
   plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.NoErrorsPlugin()
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
 
   module: {

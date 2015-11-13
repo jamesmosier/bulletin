@@ -5,19 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>MyApp</title>
+  <title>Bulletin</title>
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700,300' rel='stylesheet' type='text/css'>
   <!-- <link href="/css/app.css" rel="stylesheet"> -->
 </head>
 <body>
-  <h1>Hello MyApp!</h1>
-  <button type="button" id="target">Check the console!</button>
+  <h1>Hello Bulletin!</h1>
+  <!-- <button type="button" id="target">Check the console!</button> -->
 
   <script src="/public/assets/js/bundle.js"></script>
 
   <script type="text/javascript">
-    new Bulletin();
+    var bul = new Bulletin();
+    // bul.prompt('success', 'this is the msg', 'the title', { duration: 2000 });
+    bul.notify('success', 'this is the msg', 'the title', { duration: 2000 });
   </script>
 </body>
 </html>
