@@ -2,7 +2,7 @@
 
 import Notify from './notify';
 import Prompt from './prompt';
-import _ from 'lodash';
+import extend from '../utils/extend';
 
 var defaults = {
   duration: 1500,
@@ -13,27 +13,40 @@ var defaults = {
 //google: javascript get parameters from parent function
 //just make this a prototype and call function from something like Bulletin.prototype.prompt, retrieving this.settings from constructor
 
-var Bulletin = function(options) {
-  var trap = 123;
+var Bulletin = function(color, message, title, options) {
+  this.settings = extend(defaults, options);
+  this.color = color;
 
-  this.settings = _.extend(defaults, options);
-
-  var bulletinApi = {
-    notify: this.notify,
-    prompt: Prompt
-  };
-
-  return bulletinApi;
+  return this;
 };
 
-// Bulletin.prototype.prompt = function () {
-//     Prompt(color, message, title, this.settings);
-// };
+Bulletin.prototype.getObjWithParam = function(val) {
+    console.log("value in parent class "+val);
+};
 
-Bulletin.prototype.notify = function (color, message, title) {
-    var sett = this.settings;
-    var trap = 123;
+Bulletin.prototype.prompt = function() {
+  debugger;
+  // Prompt(color, message, title, this.settings);
+};
+
+Bulletin.prototype.notify = function() {
+
+  var sett = this.settings;
+  var trap = 123;
+  return this;
 };
 
 export default Bulletin;
 
+
+
+
+// var myPrototype = {
+//   methodA: function methodA() {},
+//   methodB: function methodB() {},
+//   methodC: function methodC() {}
+// };
+
+// createFoo = function createFoo() {
+//   return (Object.create(myPrototype));
+// };
