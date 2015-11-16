@@ -16,14 +16,23 @@ var defaults = {
 var Bulletin = function(options) {
   var trap = 123;
 
-  var settings = _.extend(defaults, options);
+  this.settings = _.extend(defaults, options);
 
   var bulletinApi = {
-    notify: Notify,
+    notify: this.notify,
     prompt: Prompt
   };
 
   return bulletinApi;
+};
+
+// Bulletin.prototype.prompt = function () {
+//     Prompt(color, message, title, this.settings);
+// };
+
+Bulletin.prototype.notify = function (color, message, title) {
+    var sett = this.settings;
+    var trap = 123;
 };
 
 export default Bulletin;
