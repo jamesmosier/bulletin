@@ -9,9 +9,8 @@ var defaults = {
   someProp: 'james'
 };
 
-//http://stackoverflow.com/questions/8624590/accessing-instance-variable-from-parent-function
-//google: javascript get parameters from parent function
-//just make this a prototype and call function from something like Bulletin.prototype.prompt, retrieving this.settings from constructor
+// What i want to happen:
+// call something like Bulletin(params).notify() which should pass all params to child func
 
 var Bulletin = function(color, message, title, options) {
   this.settings = extend(defaults, options);
