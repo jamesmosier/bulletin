@@ -9,11 +9,10 @@ var defaults = {
   someProp: 'james'
 };
 
-// What i want to happen:
-// call something like Bulletin(params).notify() which should pass all params to child func
-
 var Bulletin = function(color, message, title, options) {
   this.settings = extend(defaults, options);
+  this.message = message;
+  this.title = title;
   this.color = color;
 
   return this;
@@ -24,15 +23,11 @@ Bulletin.prototype.getObjWithParam = function(val) {
 };
 
 Bulletin.prototype.prompt = function() {
-  debugger;
-  // Prompt(color, message, title, this.settings);
+  Prompt(this.color, this.message, this.title, this.settings);
 };
 
 Bulletin.prototype.notify = function() {
-
-  var sett = this.settings;
-  var trap = 123;
-  return this;
+  Notify(this.color, this.message, this.title, this.settings);
 };
 
 export default Bulletin;
