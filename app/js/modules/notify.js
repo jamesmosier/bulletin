@@ -1,33 +1,17 @@
 'use strict';
 
+import BuildElement from './buildElement';
+import Timer from '../utils/timer';
+
 var Notify = function(color, message, title, options) {
-    var bulletinOuter = document.createElement('div');
-    // bulletinOuter.style.position = 'absolute';
-    // bulletinOuter.style.top = 0;
-    // bulletinOuter.style.right = 0;
-    // bulletinOuter.style.minWidth = '100px';
-    // bulletinOuter.style.minHeight = '100px';
-    bulletinOuter.className = 'bulletin-container';
+  var bulletinElement = BuildElement(color, message, title);
 
-    var bulletinInner = document.createElement('div');
-    bulletinInner.className = 'bulletin-inner';
+  var duration = parseInt(options.duration);
 
-    var titleElem = document.createElement('div');
-    var messageElem = document.createElement('div');
-
-    var titleText = document.createTextNode(title);
-    var messageText = document.createTextNode(message);
-
-    titleElem.appendChild(titleText);
-    messageElem.appendChild(messageText);
-
-    bulletinInner.appendChild(titleElem);
-    bulletinInner.appendChild(messageElem);
-
-    bulletinOuter.appendChild(bulletinInner);
-
+  var waitToHide = new Timer(function() {
     var body = document.getElementsByTagName('body')[0];
-    body.appendChild(bulletinOuter);
+    body.removeChild(bulletinElement);
+  }, duration);
 };
 
 export default Notify;
