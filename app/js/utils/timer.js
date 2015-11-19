@@ -16,6 +16,10 @@ var Timer = function(callback, delay) {
     timerId = window.setTimeout(callback, remaining);
   };
 
+  this.clear = function () {
+    window.clearTimeout(timerId);
+  };
+
   this.resume();
 };
 
