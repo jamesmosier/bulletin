@@ -14,12 +14,12 @@ var Notify = function(color, message, title, options) {
   }, duration);
 
   bulletinElement.addEventListener('mouseover', function () {
-    console.log('mousing over');
+    // console.log('mousing over');
     waitToHide.pause();
   }.bind(this), true);
 
   bulletinElement.addEventListener('mouseout', function () {
-    console.log('mousing OUT');
+    // console.log('mousing OUT');
     waitToHide.resume();
   }.bind(this), true);
 };
