@@ -2,8 +2,7 @@
 
 import Notify from './notify';
 import Ask from './ask';
-
-var bulletinCount = 0;
+import ElementCount from './elementCount';
 
 var defaults = {
   duration: 1500,
@@ -16,24 +15,21 @@ var Bulletin = function(color, message, title, options) {
   this.title = title;
   this.color = color;
 
-  console.log('at start of bulletin init' + bulletinCount);
+  var bulletinCount = ElementCount.get();
+  if (!bulletinCount) {
+    bulletinCount = 0;
+  }
 
-  if (bulletinCount === 0 || !bulletinCount) {
+  if (bulletinCount === 0) {
     // build container
     this.bulletinOuter = document.createElement('div');
     this.bulletinOuter.className = 'bulletin-container';
 
     var body = document.getElementsByTagName('body')[0];
     body.appendChild(this.bulletinOuter);
-
-    bulletinCount = 0;
   } else {
-    console.log('bulletin count is not 0');
     this.bulletinOuter = document.querySelector('.bulletin-container');
   }
-
-  bulletinCount++;
-  console.log(bulletinCount);
 
   return this;
 };
@@ -43,8 +39,7 @@ Bulletin.prototype.ask = function() {
 };
 
 Bulletin.prototype.notify = function() {
-  var ret = Notify(this.color, this.message, this.title, this.settings, bulletinCount, this.bulletinOuter);
-  bulletinCount = ret;
+  Notify(this.color, this.message, this.title, this.settings, this.bulletinOuter);
 };
 
 export default Bulletin;
