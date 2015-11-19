@@ -1,8 +1,6 @@
 'use strict';
 
 var BuildElement = function(color, message, title) {
-  // var bulletinOuter = document.createElement('div');
-  // bulletinOuter.className = 'bulletin-container';
 
   var bulletinInner = document.createElement('div');
   bulletinInner.className = 'bulletin-inner';
@@ -21,11 +19,6 @@ var BuildElement = function(color, message, title) {
 
   bulletinInner.appendChild(titleElem);
   bulletinInner.appendChild(messageElem);
-
-  // bulletinOuter.appendChild(bulletinInner);
-
-  // var body = document.getElementsByTagName('body')[0];
-  // body.appendChild(bulletinOuter);
 
   return bulletinInner;
 };
