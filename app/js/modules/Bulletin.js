@@ -35,7 +35,7 @@ var Bulletin = function(color, message, title, options) {
 };
 
 Bulletin.prototype.ask = function() {
-  Ask(this.color, this.message, this.title, this.settings);
+  Ask(this.color, this.message, this.title, this.settings, this.bulletinOuter);
 };
 
 Bulletin.prototype.notify = function() {

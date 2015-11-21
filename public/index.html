@@ -52,8 +52,14 @@
     }
 
     .bulletin-title {
-        font-size: 16px;
-        margin-bottom: 5px;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .bulletin-ask-container > div {
+      float: left;
+      text-align: center;
+      width: 50%;
     }
   </style>
 </head>
@@ -63,7 +69,8 @@
   <script src="/public/assets/js/bundle.js"></script>
 
   <script type="text/javascript">
-    new Bulletin('success', 'this is the msg', 'the title', { duration: 999999 }).notify();
+    new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999 }).notify();
+    new Bulletin('success', 'this is the ask msg', 'the ask', { duration: 999999 }).ask();
     // bul.prompt('success', 'this is the msg', 'the title', { duration: 2000 });
     // bul.notify('success', 'this is the msg', 'the title', { duration: 2000 });
   </script>
