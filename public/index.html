@@ -30,22 +30,23 @@
     }
 
     .bulletin-inner {
-      min-width: 175px;
-      min-height: 60px;
+      border-radius: 3px;
       background-color: #51A551;
       color: #fff;
       cursor: pointer;
       font-size: 14px;
-      padding: 10px;
+      padding-top: 10px;
       margin: 0 0 6px;
       opacity: .8;
       -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
       filter: alpha(opacity=80);
       pointer-events: auto;
       overflow: hidden;
+      min-width: 175px;
+      min-height: 60px;
     }
 
-    .bulletin-inner:hover {
+    .bulletin-inner:not(.bulletin-ask):hover {
       opacity: 1;
       -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
       filter: alpha(opacity=100);
@@ -54,12 +55,42 @@
     .bulletin-title {
       font-size: 16px;
       margin-bottom: 5px;
+      padding: 0 10px;
+    }
+
+    .bulletin-message {
+      padding: 0 10px;
+    }
+
+    .bulletin-ask-container {
+      float: left;
+      margin-top: 5px;
+      width: 100%;
     }
 
     .bulletin-ask-container > div {
+      border-top: 1px solid #3B883B;
       float: left;
+      padding-bottom: 5px;
       text-align: center;
       width: 50%;
+    }
+
+      .bulletin-ask-container > div:hover {
+        background-color: #299229;
+        border-top: 1px solid #2A6B2A;
+      }
+
+      .bulletin-ask-container > .bulletin-deny:hover {
+        border-left: 1px solid #2A6B2A;
+      }
+
+      .bulletin-ask-container > .bulletin-confirm:hover + .bulletin-deny {
+        border-left: 1px solid #2A6B2A;
+      }
+
+    .bulletin-deny {
+      border-left: 1px solid #3B883B;
     }
   </style>
 </head>
@@ -70,7 +101,18 @@
 
   <script type="text/javascript">
     new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999 }).notify();
-    new Bulletin('success', 'this is the ask msg', 'the ask', { duration: 999999 }).ask();
+    function foo () {
+      alert('hi from ask');
+    }
+
+    function foo2() {
+      alert('hi from ask 2');
+    }
+
+    new Bulletin('success', 'this is the ask msg', 'the ask', { duration: 999999, onConfirm: foo }).ask();
+
+    new Bulletin('success', 'this is the ask2 msg', 'the ask2', { duration: 999999, onConfirm: foo2 }).ask();
+
     // bul.prompt('success', 'this is the msg', 'the title', { duration: 2000 });
     // bul.notify('success', 'this is the msg', 'the title', { duration: 2000 });
   </script>

@@ -6,7 +6,11 @@ import ElementCount from './elementCount';
 
 var defaults = {
   duration: 1500,
-  someProp: 'james'
+  onConfirm: null,
+  onDeny: null,
+  onClose: null,
+  onShown: null,
+  onHiding: null
 };
 
 var Bulletin = function(color, message, title, options) {
