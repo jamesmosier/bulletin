@@ -1,5 +1,7 @@
 # Bulletin
 
+*Note*: **Work in progress!** Most of the bones of the library are there, but is still being actively developed. (11/25/15)
+
 Simple JavaScript unobtrusive notifications, dependency free.
 
 
