@@ -10,11 +10,11 @@ Bulletin is a JavaScript library that allows you to display unobtrusive, non-blo
 ## Setup & Usage
 
 1. Include `bulletin.js` on your page.
-2. Instaniate Bulletin, passing in parameters (see parameters list below)
+2. Instantiate Bulletin, passing in parameters (see parameters list below)
 3. Call either `.notify()` or `.ask()`
 
 
-```
+```html
 <script src="/path/to/bulletin.js"></script>
 <script type="text/javascript">
     // notification
@@ -42,6 +42,6 @@ There are a number of parameters you can pass in to Bulletin. Some are required,
 * **duration** - Default: 2000 | Type: Number | Description: How long should the Bulletin appear for (in milliseconds)
 * **onConfirm** - Default: null | Type: Callback | Description: What happens when a user clicks "confirm" on an `ask` Bulletin
 * **onDeny** - Default: null | Type: Callback | Description: What happens when a user clicks "deny" on an `ask` Bulletin
-* **onClose** - Default: null | Type: Callback | Description: What happens when the Bulletin is forcably closed by the user for either `notify` or `ask`
+* **onClose** - Default: null | Type: Callback | Description: What happens when the Bulletin is forcibly closed by the user for either `notify` or `ask`
 * **onShown** - Default: null | Type: Callback | Description: What happens when the Bulletin is shown for either `notify` or `ask`
 * **onHiding** - Default: null | Type: Callback | Description: What happens when the Bulletin closes (once duration is over) for either `notify` or `ask`
