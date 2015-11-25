@@ -5,7 +5,7 @@ import Ask from './ask';
 import ElementCount from './elementCount';
 
 var defaults = {
-  duration: 1500,
+  duration: 2000,
   onConfirm: null,
   onDeny: null,
   onClose: null,
