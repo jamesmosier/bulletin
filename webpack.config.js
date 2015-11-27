@@ -11,9 +11,9 @@ module.exports = {
   entry: ['./main'],
   presets: ['es2015'],
   output: {
-    path: path.resolve('build/js/'),
+    path: path.resolve('dist/'),
     publicPath: '/public/assets/js/',
-    filename: 'bundle.js'
+    filename: 'bulletin.js'
   },
 
   devServer: {

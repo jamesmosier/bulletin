@@ -17,16 +17,9 @@ var Ask = function(color, message, title, options, bulletinOuter) {
   bulletinElement.appendChild(askElements);
   bulletinOuter.appendChild(bulletinElement);
 
-  // askElements.id = ElementCount.get();
-
-  // var duration = parseInt(options.duration);
-
   if (typeof(options.onConfirm) == 'function') {
     var confirmBtn = FindChild(askElements, 'bulletin-confirm');
-    // var confirmBtn = bulletinElement.querySelector('.bulletin-confirm');
-    confirmBtn.addEventListener('click', function(e) {
-      options.onConfirm();
-    }.bind(this), true);
+    confirmBtn.addEventListener('click', options.onConfirm, true);
   }
 };
 
