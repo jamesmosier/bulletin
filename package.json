@@ -1,7 +1,7 @@
 {
   "name": "bulletin",
-  "version": "0.0.1",
-  "description": "Simple notifications without any dependencies.",
+  "version": "0.0.2",
+  "description": "Non-block, unobtrusive JavaScript notifications without any dependencies.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,8 +25,5 @@
     "node-libs-browser": "^0.5.3",
     "strip-loader": "^0.1.0",
     "webpack": "^1.12.2"
-  },
-  "dependencies": {
-    "lodash": "^3.10.1"
   }
 }
