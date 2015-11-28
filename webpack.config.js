@@ -26,13 +26,13 @@ module.exports = {
   ],
 
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.js$/,
-    //     exclude: 'node_modules',
-    //     loader: 'jshint-loader'
-    //   }
-    // ],
+    preLoaders: [
+      {
+        test: /(\.js$|\.jsx$)/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      }
+    ],
     loaders: [{
       test: /\.js$/,
       loader: 'babel',
@@ -42,6 +42,9 @@ module.exports = {
         presets: ['es2015']
       }
     }]
+  },
+  eslint: {
+    configFile: '.eslintrc'
   },
   resolve: {
     extensions: ['', '.js']
