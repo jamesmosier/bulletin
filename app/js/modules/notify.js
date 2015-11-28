@@ -11,25 +11,36 @@ var Notify = function(color, message, title, options, bulletinOuter) {
   var bulletinElement = BuildElement(color, message, title);
   bulletinOuter.appendChild(bulletinElement);
 
+  // TODO: not working?
+  var showingEvent = new Event('bulletin-showing');
+  bulletinElement.dispatchEvent(showingEvent);
+
   var duration = parseInt(options.duration);
 
   var waitToHide = new Timer(function() {
     return Dismiss(bulletinElement, bulletinOuter);
   }, duration);
 
-  bulletinElement.addEventListener('mouseover', function () {
+  bulletinElement.addEventListener('mouseover', function() {
     waitToHide.pause();
   }.bind(this), true);
 
-  bulletinElement.addEventListener('mouseout', function () {
+  bulletinElement.addEventListener('mouseout', function() {
     waitToHide.resume();
   }.bind(this), true);
 
-  bulletinElement.addEventListener('click', function () {
+  bulletinElement.addEventListener('click', function() {
     waitToHide.clear();
     return Dismiss(bulletinElement, bulletinOuter);
   }.bind(this), true);
 
+  bulletinElement.addEventListener('bulletin-dismissing', function() {
+    alert('dismissing');
+  }, false);
+
+  bulletinElement.addEventListener('bulletin-showing', function() {
+    alert('showing');
+  }, false);
 };
 
 export default Notify;

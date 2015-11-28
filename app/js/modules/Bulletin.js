@@ -5,6 +5,7 @@ import Ask from './ask';
 import ElementCount from './elementCount';
 
 var defaults = {
+  type: 'alert',
   duration: 2000,
   onConfirm: null,
   onDeny: null,
@@ -28,6 +29,10 @@ var Bulletin = function(color, message, title, options) {
     // build container
     this.bulletinOuter = document.createElement('div');
     this.bulletinOuter.className = 'bulletin-container';
+
+    if (this.settings.type === 'banner') {
+      this.bulletinOuter.className += ' bulletin-banner';
+    }
 
     var body = document.getElementsByTagName('body')[0];
     body.appendChild(this.bulletinOuter);

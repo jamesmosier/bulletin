@@ -17,10 +17,21 @@ var Ask = function(color, message, title, options, bulletinOuter) {
   bulletinElement.appendChild(askElements);
   bulletinOuter.appendChild(bulletinElement);
 
-  if (typeof(options.onConfirm) == 'function') {
+  if (typeof(options.onConfirm) === 'function') {
     var confirmBtn = FindChild(askElements, 'bulletin-confirm');
     confirmBtn.addEventListener('click', options.onConfirm, true);
   }
+
+  if (typeof(options.onDeny) === 'function') {
+    var denyBtn = FindChild(askElements, 'bulletin-deny');
+    denyBtn.addEventListener('click', options.onDeny, true);
+  }
 };
+
+// onConfirm: null,
+//  onDeny: null,
+//  onClose: null,
+//  onShown: null,
+//  onHiding: null
 
 export default Ask;

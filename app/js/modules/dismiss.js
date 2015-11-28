@@ -3,9 +3,9 @@
 import ElementCount from './elementCount';
 import FadeOut from '../utils/fadeOut';
 
-var Dismiss = function(elem, bulletinOuter) {
+var Dismiss = function(bulletinElem, bulletinOuter) {
   function domRemoval() {
-    bulletinOuter.removeChild(elem);
+    bulletinOuter.removeChild(bulletinElem);
 
     var count = ElementCount.decrease();
     if (count === 0) {
@@ -14,7 +14,10 @@ var Dismiss = function(elem, bulletinOuter) {
     }
   }
 
-  FadeOut(elem, domRemoval);
+  FadeOut(bulletinElem, domRemoval);
+
+  var event = new Event('bulletin-dismissing');
+  bulletinElem.dispatchEvent(event);
 };
 
 export default Dismiss;
