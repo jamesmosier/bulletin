@@ -4,6 +4,11 @@ import Notify from './notify';
 import Ask from './ask';
 import ElementCount from './elementCount';
 
+const BULL = {
+  BANNER: 'banner',
+  BANNER_CONTAINER: 'bulletin-container'
+};
+
 var defaults = {
   type: 'alert',
   duration: 2000,
@@ -28,16 +33,16 @@ var Bulletin = function(color, message, title, options) {
   if (bulletinCount === 0) {
     // build container
     this.bulletinOuter = document.createElement('div');
-    this.bulletinOuter.className = 'bulletin-container';
+    this.bulletinOuter.className = BULL.BANNER_CONTAINER;
 
-    if (this.settings.type === 'banner') {
+    if (this.settings.type === BULL.BANNER) {
       this.bulletinOuter.className += ' bulletin-banner';
     }
 
     var body = document.getElementsByTagName('body')[0];
     body.appendChild(this.bulletinOuter);
   } else {
-    this.bulletinOuter = document.querySelector('.bulletin-container');
+    this.bulletinOuter = document.querySelector('.' + BULL.BANNER_CONTAINER);
   }
 
   return this;
