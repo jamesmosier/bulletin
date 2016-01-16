@@ -7,11 +7,13 @@
 
   <title>Bulletin</title>
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700,300' rel='stylesheet' type='text/css'>
+  <!-- HID THIS FOR THE FLIGHT
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700,300' rel='stylesheet' type='text/css'> -->
   <!-- <link href="/css/app.css" rel="stylesheet"> -->
 
   <style type="text/css">
     body {
+      background: #2B2B2B;
       font-family: 'Open Sans', sans-serif;
     }
 
@@ -114,17 +116,25 @@
 
   <script type="text/javascript">
     new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999 }).notify();
-    function foo () {
-      alert('hi from ask');
+    function confirm1 () {
+      alert('CONFIRM! hi from ask');
     }
 
-    function foo2() {
-      alert('hi from ask 2');
+    function confirm2() {
+      alert('CONFIRM2! hi from ask 2');
     }
 
-    new Bulletin('success', 'this is the ask msg', 'the ask', { duration: 999999, onConfirm: foo }).ask();
+    function deny1 () {
+      alert('DENY1');
+    }
 
-    new Bulletin('success', 'this is the ask2 msg', 'the ask2', { duration: 999999, onConfirm: foo2 }).ask();
+    function deny2 () {
+      alert('DENY2');
+    }
+
+    new Bulletin('success', 'this is the ask msg', 'the ask', { duration: 999999, onConfirm: confirm1, onDeny: deny1 }).ask();
+
+    new Bulletin('success', 'this is the ask2 msg', 'the ask2', { duration: 999999, onConfirm: confirm2, onDeny: deny2 }).ask();
 
     // bul.prompt('success', 'this is the msg', 'the title', { duration: 2000 });
     // bul.notify('success', 'this is the msg', 'the title', { duration: 2000 });

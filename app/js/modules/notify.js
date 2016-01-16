@@ -11,11 +11,12 @@ var Notify = function(color, message, title, options, bulletinOuter) {
   var bulletinElement = BuildElement(color, message, title);
   bulletinOuter.appendChild(bulletinElement);
 
-  // TODO: not working?
+  // TODO: not working :(
   var showingEvent = new Event('bulletin-showing');
   bulletinElement.dispatchEvent(showingEvent);
 
   var duration = parseInt(options.duration);
+  // TODO: need to determine if NaN or some other oddity when parsing (such as passing objs)
 
   var waitToHide = new Timer(function() {
     return Dismiss(bulletinElement, bulletinOuter);
@@ -40,6 +41,10 @@ var Notify = function(color, message, title, options, bulletinOuter) {
 
   bulletinElement.addEventListener('bulletin-showing', function() {
     alert('showing');
+  }, true);
+
+  bulletinElement.addEventListener('bulletin-showing', function() {
+    alert('showing with false');
   }, false);
 };
 
