@@ -13,8 +13,9 @@
 
   <style type="text/css">
     body {
-      background: #2B2B2B;
-      font-family: 'Open Sans', sans-serif;
+      /*background: #2B2B2B;*/
+      font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-weight: 300;
     }
 
     .bulletin-container * {
@@ -109,13 +110,19 @@
     }
   </style>
 </head>
-<body>
+<body id="body">
   <h1>Hello Bulletin!</h1>
 
   <script src="/public/assets/js/bulletin.js"></script>
 
   <script type="text/javascript">
-    new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999 }).notify();
+    function onShownCb  () {
+      console.log('this is..');
+      console.log(this);
+      console.warn('onShown');
+    }
+
+    new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999, onShown: onShownCb }).notify();
     function confirm1 () {
       alert('CONFIRM! hi from ask');
     }

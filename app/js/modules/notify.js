@@ -8,15 +8,14 @@ import ElementCount from './elementCount';
 var Notify = function(color, message, title, options, bulletinOuter) {
   ElementCount.increase();
 
+  var showingEvent = new Event('bulletin-showing');
   var bulletinElement = BuildElement(color, message, title);
   bulletinOuter.appendChild(bulletinElement);
 
-  // TODO: not working :(
-  var showingEvent = new Event('bulletin-showing');
-  bulletinElement.dispatchEvent(showingEvent);
-
   var duration = parseInt(options.duration);
-  // TODO: need to determine if NaN or some other oddity when parsing (such as passing objs)
+  if (duration === 'NaN') {
+    duration = 2000;
+  }
 
   var waitToHide = new Timer(function() {
     return Dismiss(bulletinElement, bulletinOuter);
@@ -40,12 +39,14 @@ var Notify = function(color, message, title, options, bulletinOuter) {
   }, false);
 
   bulletinElement.addEventListener('bulletin-showing', function() {
-    alert('showing');
+    if (typeof options.onShown === 'function') {
+      // TODO: what should 'this' be for onShown()?
+      options.onShown();
+      // options.onShown.call(this);
+    }
   }, true);
 
-  bulletinElement.addEventListener('bulletin-showing', function() {
-    alert('showing with false');
-  }, false);
+  bulletinElement.dispatchEvent(showingEvent);
 };
 
 export default Notify;
