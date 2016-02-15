@@ -1,7 +1,7 @@
 {
   "name": "bulletin",
   "version": "0.0.2",
-  "description": "Non-block, unobtrusive JavaScript notifications without any dependencies.",
+  "description": "Non-blocking, unobtrusive JavaScript notifications without any dependencies.",
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline --progress",

@@ -4,16 +4,7 @@ import Notify from './notify';
 import Ask from './ask';
 import ElementCount from './elementCount';
 import BULL from './constants';
-
-var defaults = {
-  type: 'alert',
-  duration: 2000,
-  onConfirm: null,
-  onDeny: null,
-  onClose: null,
-  onShown: null,
-  onHiding: null
-};
+import defaults from './defaults';
 
 var Bulletin = function(color, message, title, options) {
   this.settings = Object.assign(defaults, options);
