@@ -4,6 +4,7 @@ import BuildElement from './buildElement';
 import Dismiss from './dismiss';
 import Timer from '../utils/timer';
 import ElementCount from './elementCount';
+import BULL from './constants';
 
 var Notify = function(color, message, title, options, bulletinOuter) {
   ElementCount.increase();
@@ -34,11 +35,11 @@ var Notify = function(color, message, title, options, bulletinOuter) {
     return Dismiss(bulletinElement, bulletinOuter);
   }.bind(this), true);
 
-  bulletinElement.addEventListener('bulletin-dismissing', function() {
+  bulletinElement.addEventListener(BULL.DISMISSING, function() {
     alert('dismissing');
   }, false);
 
-  bulletinElement.addEventListener('bulletin-showing', function() {
+  bulletinElement.addEventListener(BULL.SHOWING, function() {
     if (typeof options.onShown === 'function') {
       // TODO: what should 'this' be for onShown()?
       options.onShown();

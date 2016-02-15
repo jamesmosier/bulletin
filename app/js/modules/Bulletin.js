@@ -3,11 +3,7 @@
 import Notify from './notify';
 import Ask from './ask';
 import ElementCount from './elementCount';
-
-const BULL = {
-  BANNER: 'banner',
-  BANNER_CONTAINER: 'bulletin-container'
-};
+import BULL from './constants';
 
 var defaults = {
   type: 'alert',
