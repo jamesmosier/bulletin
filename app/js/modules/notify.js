@@ -36,7 +36,9 @@ var Notify = function(color, message, title, options, bulletinOuter) {
   }.bind(this), true);
 
   bulletinElement.addEventListener(BULL.DISMISSING, function() {
-    alert('dismissing');
+    if (typeof options.onDismiss === 'function') {
+      options.onDismiss();
+    }
   }, false);
 
   bulletinElement.addEventListener(BULL.SHOWING, function() {

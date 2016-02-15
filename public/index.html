@@ -122,7 +122,11 @@
       console.warn('onShown');
     }
 
-    new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999, onShown: onShownCb }).notify();
+    function onDismissCb() {
+      console.warn('dismissing!');
+    }
+
+    new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999, onShown: onShownCb, onDismiss: onDismissCb }).notify();
     function confirm1 () {
       alert('CONFIRM! hi from ask');
     }
