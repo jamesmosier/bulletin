@@ -1,0 +1,11 @@
+# Site settings
+title: bulletin
+description: > # this means to ignore newlines until "baseurl:"
+  Non-blocking, unobtrusive JavaScript notifications. Dependency free :heart:
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://bulletin.github.io" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
