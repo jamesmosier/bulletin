@@ -6,10 +6,12 @@ import Dismiss from './dismiss';
 import Timer from '../utils/timer';
 import ElementCount from './elementCount';
 import FindChild from '../utils/findChild';
+import BULL from './constants';
 
 var Ask = function(color, message, title, options, bulletinOuter) {
   ElementCount.increase();
 
+  var showingEvent = new Event(BULL.SHOWING);
   var bulletinElement = BuildElement(color, message, title);
   bulletinElement.className += ' bulletin-ask';
 
@@ -20,32 +22,30 @@ var Ask = function(color, message, title, options, bulletinOuter) {
   // Confirm (user presses confirm)
   if (typeof(options.onConfirm) === 'function') {
     var confirmBtn = FindChild(askElements, 'bulletin-confirm');
-    confirmBtn.addEventListener('click', options.onConfirm, true);
+    confirmBtn.addEventListener('click', options.onConfirm);
   }
 
   // Deny (user presses deny)
   if (typeof(options.onDeny) === 'function') {
     var denyBtn = FindChild(askElements, 'bulletin-deny');
-    denyBtn.addEventListener('click', options.onDeny, true);
+    denyBtn.addEventListener('click', options.onDeny);
   }
 
   // Shown (when it is completely visible)
-  if (typeof(options.onShown) === 'function') {
-    // var denyBtn = FindChild(askElements, 'bulletin-deny');
-    // denyBtn.addEventListener('click', options.onShown, true);
-  }
+  bulletinElement.addEventListener(BULL.SHOWING, function() {
+    if (typeof(options.onShown) === 'function') {
+      options.onShown();
+    }
+  });
 
   // Hide (when ask if complete hid)
-  if (typeof(options.onDeny) === 'function') {
-    var denyBtn = FindChild(askElements, 'bulletin-deny');
-    denyBtn.addEventListener('click', options.onDeny, true);
-  }
+  bulletinElement.addEventListener(BULL.DISMISSING, function() {
+    if (typeof options.onDismiss === 'function') {
+      options.onDismiss();
+    }
+  });
 
-  // Hiding (as soon as it starts hiding)
-  if (typeof(options.onDeny) === 'function') {
-    var denyBtn = FindChild(askElements, 'bulletin-deny');
-    denyBtn.addEventListener('click', options.onDeny, true);
-  }
+  bulletinElement.dispatchEvent(showingEvent);
 };
 
 // onConfirm: null,

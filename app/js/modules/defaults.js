@@ -1,4 +1,4 @@
-const defaults = {
+var defaults = {
   type: 'alert',
   duration: 2000,
   onConfirm: null,

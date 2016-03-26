@@ -9,7 +9,7 @@ import BULL from './constants';
 var Notify = function(color, message, title, options, bulletinOuter) {
   ElementCount.increase();
 
-  var showingEvent = new Event('bulletin-showing');
+  var showingEvent = new Event(BULL.SHOWING);
   var bulletinElement = BuildElement(color, message, title);
   bulletinOuter.appendChild(bulletinElement);
 
@@ -24,30 +24,32 @@ var Notify = function(color, message, title, options, bulletinOuter) {
 
   bulletinElement.addEventListener('mouseover', function() {
     waitToHide.pause();
-  }.bind(this), true);
+  }.bind(this));
 
   bulletinElement.addEventListener('mouseout', function() {
     waitToHide.resume();
-  }.bind(this), true);
+  }.bind(this));
 
   bulletinElement.addEventListener('click', function() {
     waitToHide.clear();
     return Dismiss(bulletinElement, bulletinOuter);
-  }.bind(this), true);
+  }.bind(this));
 
+  // during hiding
   bulletinElement.addEventListener(BULL.DISMISSING, function() {
     if (typeof options.onDismiss === 'function') {
       options.onDismiss();
     }
-  }, true);
+  });
 
+  // during showing
   bulletinElement.addEventListener(BULL.SHOWING, function() {
     if (typeof options.onShown === 'function') {
       // TODO: what should 'this' be for onShown()?
       options.onShown();
       // options.onShown.call(this);
     }
-  }, true);
+  });
 
   bulletinElement.dispatchEvent(showingEvent);
 };

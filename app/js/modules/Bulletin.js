@@ -5,9 +5,10 @@ import Ask from './ask';
 import ElementCount from './elementCount';
 import BULL from './constants';
 import defaults from './defaults';
+import extend from '../utils/extend';
 
 var Bulletin = function(color, message, title, options) {
-  this.settings = Object.assign(defaults, options);
+  this.settings = extend(defaults, options);
   this.message = message;
   this.title = title;
   this.color = color;
@@ -36,11 +37,11 @@ var Bulletin = function(color, message, title, options) {
 };
 
 Bulletin.prototype.ask = function() {
-  Ask(this.color, this.message, this.title, this.settings, this.bulletinOuter);
+  return Ask(this.color, this.message, this.title, this.settings, this.bulletinOuter);
 };
 
 Bulletin.prototype.notify = function() {
-  Notify(this.color, this.message, this.title, this.settings, this.bulletinOuter);
+  return Notify(this.color, this.message, this.title, this.settings, this.bulletinOuter);
 };
 
 export default Bulletin;

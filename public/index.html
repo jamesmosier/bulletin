@@ -7,14 +7,12 @@
 
   <title>Bulletin</title>
 
-  <!-- HID THIS FOR THE FLIGHT
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,700,300' rel='stylesheet' type='text/css'> -->
   <!-- <link href="/css/app.css" rel="stylesheet"> -->
 
   <style type="text/css">
     body {
       /*background: #2B2B2B;*/
-      font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: 'Helvetica Neue', sans-serif;
       font-weight: 300;
     }
 
@@ -117,13 +115,11 @@
 
   <script type="text/javascript">
     function onShownCb  () {
-      console.log('this is..');
-      console.log(this);
-      console.warn('onShown');
+      console.log('onShown for notify');
     }
 
     function onDismissCb() {
-      console.warn('dismissing!');
+      console.log('dismissing!');
     }
 
     new Bulletin('success', 'this is the nofity msg', 'the notify', { duration: 999999, onShown: onShownCb, onDismiss: onDismissCb }).notify();
@@ -143,9 +139,13 @@
       alert('DENY2');
     }
 
-    new Bulletin('success', 'this is the ask msg', 'the ask', { duration: 999999, onConfirm: confirm1, onDeny: deny1 }).ask();
+    function askShowing () {
+      console.log('ask showing!!');
+    }
 
-    new Bulletin('success', 'this is the ask2 msg', 'the ask2', { duration: 999999, onConfirm: confirm2, onDeny: deny2 }).ask();
+    new Bulletin('success', 'this is the first ask msg', 'the 1st ask', { duration: 999999, onConfirm: confirm1, onDeny: deny1 }).ask();
+
+    new Bulletin('success', 'this is the ask2 msg', 'the ask2', { duration: 999999, onConfirm: confirm2, onDeny: deny2, onShown: askShowing }).ask();
 
     // bul.prompt('success', 'this is the msg', 'the title', { duration: 2000 });
     // bul.notify('success', 'this is the msg', 'the title', { duration: 2000 });
