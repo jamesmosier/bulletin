@@ -1,6 +1,3 @@
-/**
- * Reset some basic elements
- */
 body, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, hr,
 dl, dd, ol, ul, figure {
@@ -8,11 +5,6 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
-
-
-/**
- * Basic styling
- */
 body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
     color: $text-color;
@@ -25,33 +17,11 @@ body {
     font-kerning: normal;
 }
 
-
-
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: $spacing-unit / 2;
-}
-
-
-
-/**
- * Images
- */
 img {
     max-width: 100%;
     vertical-align: middle;
 }
 
-
-
-/**
- * Figures
- */
 figure > img {
     display: block;
 }
@@ -60,11 +30,6 @@ figcaption {
     font-size: $small-font-size;
 }
 
-
-
-/**
- * Lists
- */
 ul, ol {
     margin-left: $spacing-unit;
 }
@@ -76,39 +41,24 @@ li {
     }
 }
 
-
-
-/**
- * Headings
- */
 h1, h2, h3, h4, h5, h6 {
     font-weight: $base-font-weight;
 }
 
-
-
-/**
- * Links
- */
 a {
-    color: $brand-color;
+    color: $text-color;
     text-decoration: none;
 
-    &:visited {
-        color: darken($brand-color, 15%);
-    }
+    // &:visited {
+    //     color: darken($brand-color, 15%);
+    // }
 
     &:hover {
-        color: $text-color;
-        text-decoration: underline;
+        color: lighten($text-color, 20%);
+        text-decoration: none;
     }
 }
 
-
-
-/**
- * Blockquotes
- */
 blockquote {
     color: $grey-color;
     border-left: 4px solid $grey-color-light;
@@ -122,11 +72,6 @@ blockquote {
     }
 }
 
-
-
-/**
- * Code formatting
- */
 pre,
 code {
     font-size: 15px;
@@ -150,11 +95,6 @@ pre {
     }
 }
 
-
-
-/**
- * Wrapper
- */
 .wrapper {
     max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
     max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
@@ -172,13 +112,44 @@ pre {
     }
 }
 
+.container {
+  padding-right: .9375rem;
+  padding-left: .9375rem;
+  margin-right: auto;
+  margin-left: auto;
+}
 
+.container::after {
+  display: table;
+  clear: both;
+  content: "";
+}
 
-/**
- * Clearfix
- */
+@media (min-width: 544px) {
+  .container {
+    max-width: 576px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 940px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
 %clearfix {
-
     &:after {
         content: "";
         display: table;
@@ -186,13 +157,7 @@ pre {
     }
 }
 
-
-
-/**
- * Icons
- */
 .icon {
-
     > svg {
         display: inline-block;
         width: 16px;
